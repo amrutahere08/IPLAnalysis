@@ -1,0 +1,96 @@
+Analysis and Prediction for the Indian Premier League IPL Match Outcome Prediction Using Machine Learning
+
+This project applies machine learning techniques to predict the outcomes of IPL (Indian Premier League) T20 matches using a variety of traditional and novel features. It explores historical data from 2015–2019 and includes advanced feature engineering, classification models, and model explainability via SHAP values.
+
+Overview
+
+The aim of this project is to analyze and predict match outcomes in the Indian Premier League using machine learning. It combines data-driven insights with domain-specific features like toss decisions, player impact, team form, and venue-specific factors.
+
+Dataset
+
+Primary Data Sources:
+
+ESPNcricinfo: Match summaries and player stats.
+Kaggle IPL Dataset: Ball-by-ball match data.
+Augmented Data:
+
+Weather reports (OpenWeatherMap API)
+Pitch reports from IPL broadcasters
+The dataset includes:
+
+Match metadata (teams, toss result, venue, etc.)
+Team performance metrics (batting/bowling averages, total runs)
+Player-level statistics (Player of the Match awards, strike rates)
+Feature Engineering
+
+Features were categorized into:
+
+Traditional Features
+
+Feature	Description
+Toss Winner	Binary indicator if team won the toss
+Home Venue	Boolean flag for home advantage
+Novel Features
+
+Feature	Formula	Description
+Team Form (EWMA)	EWMA = α * outcome + (1 - α) * prev_EWMA (α = 0.3)	Gives more weight to recent results
+Player Impact Index	(POTM Awards / Total Matches) * 10	Measures clutch performance
+Venue Toss Bias	Wins after winning toss at venue / Total matches at venue	Captures venue-specific toss advantage
+Machine Learning Pipeline
+
+Preprocessing
+
+One-hot encoding for categorical features
+Min-max scaling for numerical features
+Feature Selection
+
+Recursive Feature Elimination (RFE) to select top 15 features
+Classification Models Used
+
+Logistic Regression
+Decision Tree
+Random Forest
+XGBoost
+Support Vector Machine (SVM)
+Naive Bayes
+Results
+
+Model	Accuracy	Precision	ROC-AUC
+Logistic Regression	95.6%	0.94	0.97
+XGBoost	96.1%	0.95	0.98
+Random Forest	93.2%	0.92	0.96
+Decision Tree	87.8%	0.88	0.91
+SVM	83.6%	0.84	0.89
+Naive Bayes	81.6%	0.80	0.85
+Model Interpretability (SHAP)
+
+Top 3 Predictive Features:
+
+Toss Decision at Venue — SHAP = 0.42
+Team Form (EWMA) — SHAP = 0.38
+Player Impact Index — SHAP = 0.35
+These insights reflect how tactical and performance-related features drive prediction accuracy.
+
+Visual Insights
+
+Batting & Bowling Indices
+POTM Frequency Analysis
+Purple/Orange Cap Player Trends
+Match Margin Distributions (Runs/Wickets)
+Future Scope
+
+Extend predictions to player auctions (value vs. performance).
+Incorporate real-time in-game predictions.
+Expand to post-2020 IPL seasons for up-to-date insights.
+Authors
+
+Harshit Barot
+Arya Kothari
+Pramod Bide
+Bhavya Ahir
+Romit Kankaria
+Amrutha Girish Hegde
+Swapna K
+License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
